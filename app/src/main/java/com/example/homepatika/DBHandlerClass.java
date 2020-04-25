@@ -116,5 +116,10 @@ public class DBHandlerClass extends SQLiteOpenHelper{
         return result;
     }
 
+    //Az adatbázis egy rekordját törli id alapján
+    public boolean deleteHandler(int ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, COLUMN_ID + "=" + String.valueOf(ID), null) > 0;
+    }
 
 }

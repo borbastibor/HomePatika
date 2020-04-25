@@ -27,3 +27,6 @@ loadAllListHandler()
 addHandler(Gyogyszer gyogyszer)
     A paraméterként megadott Gyogyszer osztály típusú változó értékeit adja hozzá új rekordként az adatbázishoz. Nincs visszatérési értéke.
 
+deleteHandler(int ID)
+    Az adatbázisból egy rekordot töröl, a paraméterként megadott id sorát.
+    A visszatérési érték boolean, ha sikeresen lefutott a törlés, akkor igazat ad vissza.

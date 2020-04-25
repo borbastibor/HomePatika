@@ -1,0 +1,29 @@
+A DBHandlerClass osztály megvalósítja az adatok és az adatbázis kezelésével kapcsolatos feladatokat.
+
+
+Függvények:
+
+@Override
+onCreate
+    Az alkalmazás indulásakor létrehozza az adatbázist a megadott paraméterekkel.
+
+@Override
+onUpgrade
+    Ebben az alkalmazásban nem használt, de kötelező eleme az SQLiteOpenHelper osztálynak.
+
+loadOneByIdHandler(int id)
+    Az adatbázis elemeiből egy adott id-val rendelkező elemet választ ki és Gyogyszer osztály értékkel tér vissza.
+
+loadNameListHandler()
+    Az adatbázis minden rekordjának az id és megnevezés mezőjének tartalmát szedi listába. ArrayList<Object[]> értékkel tér vissza.
+    A lista két elemű tömböket tartalmaz, és mivel egy int és egy String tipusú adatról van szó, ezért Object lesz a tömb típusa.
+    Erre a függvényre lehet szükség a meglévő gyógyszerek közötti keresés és választás esetén, hogy az id-ja is meglegyen.
+    Az egyes tömbelemek felhasználásánál típuskonverzióra van szükség (Integer vagy String).
+
+loadAllListHandler()
+    Az adatbázis minden rekordjának minden elemét listába szedi. ArrayList<Gyogyszer> értékkel tér vissza.
+    Ez a függvény alkalmazható egy teljes és részletes lista megjelenítéséhez, mely minden adatot tartalmaz.
+
+addHandler(Gyogyszer gyogyszer)
+    A paraméterként megadott Gyogyszer osztály típusú változó értékeit adja hozzá új rekordként az adatbázishoz. Nincs visszatérési értéke.
+

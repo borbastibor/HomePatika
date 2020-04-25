@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.lang.String;
+import java.util.ArrayList;
 
 public class DBHandlerClass extends SQLiteOpenHelper{
     //Adatbázis kezelő osztály
@@ -75,6 +76,41 @@ public class DBHandlerClass extends SQLiteOpenHelper{
         result.setMennyiseg(cursor.getInt(4));
         result.setReceptes(cursor.getInt(5));
 
+        cursor.close();;
+        db.close();
+        return result;
+    }
+
+    //Az adatbázisban lévő összes rekord id-ját és megnevezését adja vissza egy listában
+    public ArrayList<Object[]> loadNameListHandler() {
+        ArrayList<Object[]> result = new ArrayList<Object[]>();
+        String query = "SELECT " + COLUMN_ID + ", " + COLUMN_MEGNEVEZES + " FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        while(cursor.moveToNext()) {
+            result.add(new Object[]{cursor.getString(0),cursor.getString(1)});
+        }
+        cursor.close();;
+        db.close();
+        return result;
+    }
+
+    //Az adatbázis minden rekordjának minden elemét adja vissza egy listában
+    public ArrayList<Gyogyszer> loadAllListHandler() {
+        ArrayList<Gyogyszer> result = new ArrayList<Gyogyszer>();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        while(cursor.moveToNext()) {
+            result.add(new Gyogyszer(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getInt(4),
+                    cursor.getInt(1)
+            ));
+        }
         cursor.close();;
         db.close();
         return result;

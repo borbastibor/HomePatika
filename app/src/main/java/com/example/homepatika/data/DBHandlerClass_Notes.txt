@@ -30,3 +30,8 @@ addHandler(Gyogyszer gyogyszer)
 deleteHandler(int ID)
     Az adatbázisból egy rekordot töröl, a paraméterként megadott id sorát.
     A visszatérési érték boolean, ha sikeresen lefutott a törlés, akkor igazat ad vissza.
+
+updateHandler(Gyogyszer gyogyszer)
+    Az adatbázis egy rekordjának MINDEN elemét frissíti (változtatja meg). Gyogyszer típusú értéket vár, aminek a tartalma (minden értéke) felülírja az adatbázisa adott id-ján lévő értékeket.
+    Ezt nyilván úgy lesz érdemes használni, hogy egy adott elemet betöltünk az adatbázisból, a szükséges értékeit átállítjuk, mad lefuttatjuk vele a frissítést.
+    A visszatérési érték boolean, ha sikeresen lefutott a frissítés, akkor igazat ad vissza.

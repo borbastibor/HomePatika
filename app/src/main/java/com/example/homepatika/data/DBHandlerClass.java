@@ -122,4 +122,17 @@ public class DBHandlerClass extends SQLiteOpenHelper{
         return db.delete(TABLE_NAME, COLUMN_ID + "=" + String.valueOf(ID), null) > 0;
     }
 
+    public boolean updateHandler(Gyogyszer gyogyszer) {
+        int ID = gyogyszer.getId();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_MEGNEVEZES, gyogyszer.getMegnevezes());
+        values.put(COLUMN_LEIRAS, gyogyszer.getLeiras());
+        values.put(COLUMN_SZAVATOSSAG, gyogyszer.getSzavatossag());
+        values.put(COLUMN_MENNYISEG, gyogyszer.getMennyiseg());
+        values.put(COLUMN_RECEPTES, gyogyszer.getReceptes());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.update(TABLE_NAME, values, COLUMN_ID + "=" + String.valueOf(ID), null) >0;
+    }
+
 }

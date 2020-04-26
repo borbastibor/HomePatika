@@ -1,4 +1,4 @@
-package com.example.homepatika;
+package com.example.homepatika.data;
 
 public class Gyogyszer {
     //Mezők

@@ -1,4 +1,4 @@
-package com.example.homepatika;
+package com.example.homepatika.data;
 
 import android.content.ContentValues;
 import android.content.Context;

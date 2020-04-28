@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="35dp"
+    android:id="@+id/parent_layout">
+
+    <TextView
+        android:id="@+id/sor_nev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Gyógyszer neve"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/sor_leiras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="40dp"
+        android:text="Gyógyszer leírása"
+        android:textColor="#787878"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/sor_mennyiseg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:text="1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40sp" />
+</RelativeLayout>

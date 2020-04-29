@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">HomePatika</string>
-    <string name="tab_text_1">Aktuális</string>
-    <string name="tab_text_2">Módosítás</string>
+    <string name="tab_text_1">Aktuális készlet</string>
+    <string name="tab_text_2">Új gyógyszer</string>
 </resources>

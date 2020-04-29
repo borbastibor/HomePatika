@@ -36,7 +36,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COLUMN_MEGNEVEZES + " TEXT NOT NULL UNIQUE, "
+                + COLUMN_MEGNEVEZES + " TEXT NOT NULL, "
                 + COLUMN_LEIRAS + " TEXT, "
                 + COLUMN_SZAVATOSSAG + " TEXT, "
                 + COLUMN_MENNYISEG + " INTEGER, "

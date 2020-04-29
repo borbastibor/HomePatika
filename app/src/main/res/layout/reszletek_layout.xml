@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/gyogyszerNeve"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="end"
+        android:inputType="text"
+        android:text="Gyógysze neve:" />
+
+    <EditText
+        android:id="@+id/gyogyszerSzavatossaga"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:inputType="text"
+        android:text="szavatosság" />
+
+    <EditText
+        android:id="@+id/gyogyszerMennyisege"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:text="Mennyiség" />
+
+    <EditText
+        android:id="@+id/gyogyszerReceptes"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:text="Receptes?" />
+
+    <EditText
+        android:id="@+id/gyogyszerLeirasa"
+        android:layout_width="wrap_content"
+        android:layout_height="92dp"
+        android:inputType="text"
+        android:text="leírás" />
+
+    <Button
+        android:id="@+id/gyogyszerModositasGomb"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Módosítások mentése" />
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.homepatika.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Log.d("", "onBindViewHolder fv.");
 
         holder.sor_nev.setText(arrList.get(position).getMegnevezes());
@@ -49,11 +50,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: " + arrList.get(position).getMegnevezes());
-                Toast.makeText(context, arrList.get(position).getMegnevezes(), Toast.LENGTH_SHORT).show();
-                /* TODO
-                *   itt kell majd egy új ablak, ahol tudja módosítani az adatokat, vagy be tudja jelölni, ha elfogyott a gyógyszer.
-                * */
 
+                Intent intent = new Intent(context, ReszletekFragment.class);
+                intent.putExtra("id", arrList.get(position).getId());
+                context.startActivity(intent);
             }
         });
 

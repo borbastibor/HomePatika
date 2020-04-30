@@ -76,8 +76,30 @@ public class ReszletekFragment extends AppCompatActivity {
                 int ujMennyiseg = Integer.parseInt(textEditGyogyszermennyisege.getText().toString());
                 int ujReceptes = Integer.parseInt(textEditGyogyszerreceptes.getText().toString());
 
-                /* TODO
-                    Vizsgálni kellene, hogy minden mező ki van-e töltve */
+
+                // egyesével megvizsgáljuk, hogy a leírást leszámítva minden mező ki van-e töltve, és ha nincs, arra figyelmeztetjük a usert.
+                boolean boxesFilled = true;
+
+                if(textEditGyogyszerneve.getText().toString().length() == 0) {
+                    textEditGyogyszerneve.setError("Add meg a gyógyszer nevét!");
+                    boxesFilled = false;
+                }
+
+                if(textEditGyogyszerszavatossaga.getText().toString().length() == 0) {
+                    textEditGyogyszerszavatossaga.setError("Add meg a gyógyszer lejárati idejét!");
+                    boxesFilled = false;
+                }
+
+                if(textEditGyogyszermennyisege.getText().toString().length() == 0) {
+                    textEditGyogyszermennyisege.setError("Add meg a mennyiséget!");
+                    boxesFilled = false;
+                }
+
+                if(textEditGyogyszerreceptes.getText().toString().length() == 0) {
+                    textEditGyogyszerreceptes.setError("Add meg, hogy a gyógyszer receptköteles-e!");
+                    boxesFilled = false;
+                }
+
 
                 // létrehozzuk a módosított gyógyszert
                 Gyogyszer modositottGyogyszer = new Gyogyszer(1, ujNev, ujLeiras, ujSzavatossag, ujMennyiseg, ujReceptes);
@@ -85,7 +107,8 @@ public class ReszletekFragment extends AppCompatActivity {
                 // update-eljük az adatbázisban
                 dbHandlerClass.updateHandler(modositottGyogyszer);
 
-                finish();
+                if(boxesFilled == true)
+                    finish();
 
                 /* TODO
                     Ha a készlet 0-ra lett módosítva, akkor deletehandler kell update helyett! */
@@ -94,7 +117,5 @@ public class ReszletekFragment extends AppCompatActivity {
             }
         });
         
-        
     }
-
 }

@@ -1,5 +1,5 @@
 package com.example.homepatika.ui.main;
-
+//Zsoltiteszt
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;

@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Receptköteles-e? (0 = nem, 1 = igen)" />
+        android:text="Receptköteles-e?" />
 
     <Spinner
         android:id="@+id/gyogyszerReceptesSpinner"

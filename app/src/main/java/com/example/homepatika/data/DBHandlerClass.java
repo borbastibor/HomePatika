@@ -44,7 +44,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE);
     }
 
-    //Kötelezően felülírandó absztrakt metódus
+    //Kötelezően felülírandó metódus
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {}
 
@@ -122,6 +122,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
         return db.delete(TABLE_NAME, COLUMN_ID + "=" + String.valueOf(ID), null) > 0;
     }
 
+    //Az adatbázis egy rekordjának minden elemét frissíti
     public boolean updateHandler(Gyogyszer gyogyszer) {
         int ID = gyogyszer.getId();
         ContentValues values = new ContentValues();

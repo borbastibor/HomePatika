@@ -52,7 +52,7 @@ public class ReszletekFragment extends AppCompatActivity {
 
         final DBHandlerClass dbHandlerClass = new DBHandlerClass(this, null, null, 1);
 
-        Gyogyszer kivalasztottGyogyszer = dbHandlerClass.loadOneByIdHandler(atvettId);
+        final Gyogyszer kivalasztottGyogyszer = dbHandlerClass.loadOneByIdHandler(atvettId);
 
         textEditGyogyszerneve.setText(kivalasztottGyogyszer.getMegnevezes());
         textEditGyogyszerleirasa.setText(kivalasztottGyogyszer.getLeiras());
@@ -70,6 +70,7 @@ public class ReszletekFragment extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: Módosítás gomb megnyomva.");
 
+                int elemId = kivalasztottGyogyszer.getId();
                 String ujNev = textEditGyogyszerneve.getText().toString();
                 String ujLeiras = textEditGyogyszerleirasa.getText().toString();
                 String ujSzavatossag = textEditGyogyszerszavatossaga.getText().toString();
@@ -102,7 +103,7 @@ public class ReszletekFragment extends AppCompatActivity {
 
 
                 // létrehozzuk a módosított gyógyszert
-                Gyogyszer modositottGyogyszer = new Gyogyszer(1, ujNev, ujLeiras, ujSzavatossag, ujMennyiseg, ujReceptes);
+                Gyogyszer modositottGyogyszer = new Gyogyszer(elemId, ujNev, ujLeiras, ujSzavatossag, ujMennyiseg, ujReceptes);
 
                 // update-eljük az adatbázisban
                 dbHandlerClass.updateHandler(modositottGyogyszer);

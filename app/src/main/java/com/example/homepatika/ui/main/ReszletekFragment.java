@@ -47,7 +47,7 @@ public class ReszletekFragment extends AppCompatActivity {
         final EditText textEditGyogyszerleirasa = findViewById(R.id.gyogyszerLeirasa);
         final EditText textEditGyogyszerszavatossaga = findViewById(R.id.gyogyszerSzavatossaga);
         final EditText textEditGyogyszermennyisege = findViewById(R.id.gyogyszerMennyisege);
-        final EditText textEditGyogyszerreceptes = findViewById(R.id.gyogyszerReceptes);
+        final EditText textEditGyogyszerreceptes = findViewById(R.id.gyogyszerReceptes);        // TODO Ide kéne a Spinnert beműteni (gyogyszerReceptesSpinner)
         Button buttonGyogyszerModositas = findViewById(R.id.gyogyszerModositasGomb);
 
         final DBHandlerClass dbHandlerClass = new DBHandlerClass(this, null, null, 1);
@@ -75,7 +75,7 @@ public class ReszletekFragment extends AppCompatActivity {
                 String ujLeiras = textEditGyogyszerleirasa.getText().toString();
                 String ujSzavatossag = textEditGyogyszerszavatossaga.getText().toString();
                 int ujMennyiseg = Integer.parseInt(textEditGyogyszermennyisege.getText().toString());
-                int ujReceptes = Integer.parseInt(textEditGyogyszerreceptes.getText().toString());
+                int ujReceptes = Integer.parseInt(textEditGyogyszerreceptes.getText().toString());          // TODO Ide is be kéne műteni a Spinnert (gyogyszerReceptesSpinner)
 
 
                 // egyesével megvizsgáljuk, hogy a leírást leszámítva minden mező ki van-e töltve, és ha nincs, arra figyelmeztetjük a usert.

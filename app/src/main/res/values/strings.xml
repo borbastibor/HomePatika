@@ -2,4 +2,8 @@
     <string name="app_name">HomePatika</string>
     <string name="tab_text_1">Aktuális készlet</string>
     <string name="tab_text_2">Új gyógyszer</string>
+    <string-array name="igen_nem">
+        <item>Igen</item>
+        <item>Nem</item>
+    </string-array>
 </resources>

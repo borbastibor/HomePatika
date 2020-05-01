@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -116,6 +117,7 @@ public class ReszletekFragment extends AppCompatActivity {
 
                 // update-eljük az adatbázisban
                 dbHandlerClass.updateHandler(modositottGyogyszer);
+                Toast.makeText(getApplicationContext(),"Sikeres módosítás",Toast.LENGTH_SHORT).show();
 
                 if(boxesFilled == true)
                     finish();

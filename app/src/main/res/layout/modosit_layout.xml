@@ -21,6 +21,7 @@
 </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/modositFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -100,7 +101,7 @@
         android:singleLine="false" />
 
     <Button
-        android:id="@+id/gyogyszerModositasGomb"
+        android:id="@+id/gyogyszerFelviteleGomb"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="Új gyógyszer felvétele" />

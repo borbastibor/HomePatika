@@ -1,15 +1,19 @@
 package com.example.homepatika.ui.main;
 //Zsoltiteszt
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,8 +30,20 @@ public class AktualisFragment extends Fragment {
     private ArrayList<Gyogyszer> arrList = new ArrayList<>();
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            Log.d(TAG, "az AktualisFragment látható");
+        }
+        else {
+            Log.d(TAG, "az AktualisFragment nem látható");
+        }
+    }
+
+    @Override
     public void onResume() {
-        Log.d(TAG, "onResume: visszatértünk a főképernyőre");
+        Log.d(TAG, "onResume");
+
         initList(); //újratöltjük a listát
         super.onResume();
     }
@@ -35,6 +51,7 @@ public class AktualisFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
         return inflater.inflate(R.layout.aktualis_layout, container, false);
     }
 
@@ -43,7 +60,7 @@ public class AktualisFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         View content = view.findViewById(R.id.content);
 
-        Log.d(TAG, "onViewCreated: AktualisFragment");
+        Log.d(TAG, "onViewCreated");
         initList();
     }
 
@@ -94,5 +111,4 @@ public class AktualisFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
-
 }

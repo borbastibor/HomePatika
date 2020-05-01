@@ -1,7 +1,9 @@
 package com.example.homepatika.ui.main;
 
 import android.content.Context;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,7 @@ import com.example.homepatika.R;
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    private static final String TAG = "SectionsPagerAdapter";
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
@@ -27,6 +30,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Log.d(TAG, "getItem: " + position);
+
         Fragment fragment = null;
         switch (position) {
             case 0:

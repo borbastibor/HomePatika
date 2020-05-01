@@ -1,11 +1,14 @@
 package com.example.homepatika.ui.main;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,10 +26,20 @@ public class ReszletekFragment extends AppCompatActivity {
     private static final String TAG = "ReszletekFragment";
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reszletek_layout);
-        Log.d(TAG, "onCreate: indul...");
+        Log.d(TAG, "onCreate");
 
         getIncomingIntent();
      }
@@ -34,7 +47,7 @@ public class ReszletekFragment extends AppCompatActivity {
      private void getIncomingIntent(){
          Log.d(TAG, "getIncomingIntent: Jott id?");
          if(getIntent().hasExtra("id")) {
-             Log.d(TAG, "getIncomingIntent:  - jött");
+             Log.d(TAG, "getIncomingIntent: - jött");
              int atadottId = getIntent().getIntExtra("id", 0);
 
              loadData(atadottId);
@@ -61,11 +74,6 @@ public class ReszletekFragment extends AppCompatActivity {
         textEditGyogyszermennyisege.setText(String.valueOf(kivalasztottGyogyszer.getMennyiseg()));
         textEditGyogyszerreceptes.setText(String.valueOf(kivalasztottGyogyszer.getReceptes()));
 
-        /* TODO
-        *   - a Layouton csomó properyt kell még állítani!
-        *   kellenek labelek a textEditek elé */
-
-        
         buttonGyogyszerModositas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

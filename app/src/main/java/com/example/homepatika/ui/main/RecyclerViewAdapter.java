@@ -40,24 +40,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        Log.d("", "onBindViewHolder fv.");
+        Log.d(TAG, "onBindViewHolder");
 
         holder.sor_nev.setText(arrList.get(position).getMegnevezes());
         holder.sor_leiras.setText(arrList.get(position).getLeiras());
         holder.sor_mennyiseg.setText(String.valueOf(arrList.get(position).getMennyiseg()));
 
-        // mennyiségtől függő színekkel jelenik meg a szám és a 'db'
-        String strMennyisegSzin = "#FF048113"; // default zöld
-
+        // mennyiségtől függő színekkel jelenik meg a szám és a 'db' felirat
         if ( arrList.get(position).getMennyiseg() == 0 ) {
-            strMennyisegSzin = "#FFA80A0A"; // piros
-
-        } else {
-            strMennyisegSzin = "#FF048113"; // zöld
+            holder.sor_mennyiseg.setTextColor(context.getResources().getColor(R.color.nincsKeszleten));
+            holder.sor_mennyiseg_db.setTextColor(context.getResources().getColor(R.color.nincsKeszleten));
         }
-
-        holder.sor_mennyiseg.setTextColor(Color.parseColor(strMennyisegSzin));
-        holder.sor_mennyiseg_db.setTextColor(Color.parseColor(strMennyisegSzin));
+        else {
+            holder.sor_mennyiseg.setTextColor(context.getResources().getColor(R.color.vanKeszleten));
+            holder.sor_mennyiseg_db.setTextColor(context.getResources().getColor(R.color.vanKeszleten));
+        }
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override

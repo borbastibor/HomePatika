@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -93,6 +94,10 @@ public class ModositFragment extends Fragment {
 
                     // beírjuk az adatbázisba
                     dbHandlerClass.addHandler(ujGyogyszer);
+
+                    Toast.makeText(getContext(),"Sikeres rögzítés",Toast.LENGTH_SHORT).show();
+
+
 
                     // visszalépünk
                     getActivity().getSupportFragmentManager().popBackStack();

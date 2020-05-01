@@ -98,6 +98,7 @@
         android:hint="Pl. Megfázás és influenza kiváltotta tünetek enyhítésére alkalmas készítmény."
         android:inputType="textMultiLine|textCapSentences"
         android:scrollHorizontally="false"
+        android:layout_weight="1"
         android:singleLine="false" />
 
     <Button

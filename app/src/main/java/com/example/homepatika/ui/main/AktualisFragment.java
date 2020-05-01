@@ -32,11 +32,12 @@ public class AktualisFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            Log.d(TAG, "az AktualisFragment látható");
-        }
-        else {
+        if (!isVisibleToUser && isResumed()) {
             Log.d(TAG, "az AktualisFragment nem látható");
+        }
+        else if (isVisibleToUser && isResumed()){
+            Log.d(TAG, "az AktualisFragment látható");
+            initList();
         }
     }
 

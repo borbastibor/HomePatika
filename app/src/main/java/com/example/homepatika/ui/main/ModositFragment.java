@@ -105,7 +105,11 @@ public class ModositFragment extends Fragment {
 
 
 
-                    // visszalépünk
+                    /*
+                     visszalépünk
+                     TODO egyik megoldás sem működik
+                    */
+
                     getActivity().getSupportFragmentManager().popBackStack();
                     getActivity().getFragmentManager().popBackStack();
                 }

@@ -31,7 +31,7 @@
         android:id="@+id/gyogyszerSzavatossaga"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:inputType="text"
+        android:inputType="text|textCapSentences"
         android:text="szavatosság" />
 
     <TextView
@@ -78,9 +78,9 @@
     <EditText
         android:id="@+id/gyogyszerLeirasa"
         android:layout_width="match_parent"
-        android:layout_height ="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="clip_vertical"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|text|textCapSentences"
         android:scrollHorizontally="false"
         android:singleLine="false"
         android:text="leírás" />

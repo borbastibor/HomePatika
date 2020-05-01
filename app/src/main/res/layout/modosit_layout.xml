@@ -40,7 +40,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:hint="Pl. Neo Citran"
-        android:inputType="text" />
+        android:inputType="text|textCapSentences" />
 
     <TextView
         android:id="@+id/labelGyogyszerSzavatossaga"
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:gravity="clip_vertical"
         android:hint="Pl. Megfázás és influenza kiváltotta tünetek enyhítésére alkalmas készítmény."
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|textCapSentences"
         android:scrollHorizontally="false"
         android:singleLine="false" />
 

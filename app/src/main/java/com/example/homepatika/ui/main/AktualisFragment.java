@@ -79,7 +79,7 @@ public class AktualisFragment extends Fragment {
 
         if (arrList.size() == 0) {
             // üres az adatbázis, feltöltjük teszt adatokkal
-            Log.d(TAG, "initList: Üres adatbázis, feltöltjük tesz gyógyszerekkel.");
+            Log.d(TAG, "initList: Üres adatbázis, feltöltjük teszt gyógyszerekkel.");
             tesztAdatokkalFeltolt();
             initList();
         }

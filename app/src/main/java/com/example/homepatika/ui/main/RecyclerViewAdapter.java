@@ -2,6 +2,7 @@ package com.example.homepatika.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +44,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.sor_nev.setText(arrList.get(position).getMegnevezes());
         holder.sor_leiras.setText(arrList.get(position).getLeiras());
-//        holder.sor_mennyiseg.setText(arrList.get(position).getMennyiseg());
         holder.sor_mennyiseg.setText(String.valueOf(arrList.get(position).getMennyiseg()));
+
+        // mennyiségtől függő színekkel jelenik meg a szám és a 'db'
+        String strMennyisegSzin = "#FF048113"; // default zöld
+
+        if ( arrList.get(position).getMennyiseg() == 0 ) {
+            strMennyisegSzin = "#FFA80A0A"; // piros
+
+        } else {
+            strMennyisegSzin = "#FF048113"; // zöld
+        }
+
+        holder.sor_mennyiseg.setTextColor(Color.parseColor(strMennyisegSzin));
+        holder.sor_mennyiseg_db.setTextColor(Color.parseColor(strMennyisegSzin));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +82,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView sor_nev;
         TextView sor_leiras;
         TextView sor_mennyiseg;
+        TextView sor_mennyiseg_db;
         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -76,6 +90,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
              sor_nev = itemView.findViewById(R.id.sor_nev);
              sor_leiras = itemView.findViewById(R.id.sor_leiras);
              sor_mennyiseg = itemView.findViewById(R.id.sor_mennyiseg);
+             sor_mennyiseg_db = itemView.findViewById(R.id.sor_mennyiseg_db);
              parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }

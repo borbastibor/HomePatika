@@ -94,8 +94,13 @@ public class ModositFragment extends Fragment {
 
                     // beírjuk az adatbázisba
                     dbHandlerClass.addHandler(ujGyogyszer);
-
                     Toast.makeText(getContext(),"Sikeres rögzítés",Toast.LENGTH_SHORT).show();
+
+                    textEditGyogyszerneve.setText("");
+                    textEditGyogyszerszavatossaga.setText("");
+                    textEditGyogyszermennyisege.setText("");
+                    textEditGyogyszerleirasa.setText("");
+                    spinnerGyogyszerreceptes.setSelection(0);
 
 
 

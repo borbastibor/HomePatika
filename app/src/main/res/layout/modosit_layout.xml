@@ -19,98 +19,104 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/modositFragment"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollableFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:weightSum="100">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/labelGyogyszerNeve"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/modositFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gyógyszer neve" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:weightSum="100">
 
-    <EditText
-        android:id="@+id/gyogyszerNeve"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:hint="Pl. Neo Citran"
-        android:inputType="text|textCapSentences"
-        android:textColor="#393939"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/labelGyogyszerNeve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gyógyszer neve" />
 
-    <TextView
-        android:id="@+id/labelGyogyszerSzavatossaga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Szavatosság ideje" />
+        <EditText
+            android:id="@+id/gyogyszerNeve"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:hint="Pl. Neo Citran"
+            android:inputType="text|textCapSentences"
+            android:textColor="#393939"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/gyogyszerSzavatossaga"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:focusable="false"
-        android:hint="Pl. 2022.01.01"
-        android:inputType="text"
-        android:textColor="#393939" />
+        <TextView
+            android:id="@+id/labelGyogyszerSzavatossaga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Szavatosság ideje" />
 
-    <TextView
-        android:id="@+id/labelGyogyszerMennyisege"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Kiszerelés szerinti (doboz) mennyiség" />
+        <EditText
+            android:id="@+id/gyogyszerSzavatossaga"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:focusable="false"
+            android:hint="Pl. 2022.01.01"
+            android:inputType="text"
+            android:textColor="#393939" />
 
-    <EditText
-        android:id="@+id/gyogyszerMennyisege"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Pl. 5"
-        android:inputType="number"
-        android:textColor="#393939" />
+        <TextView
+            android:id="@+id/labelGyogyszerMennyisege"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Kiszerelés szerinti (doboz) mennyiség" />
 
-    <TextView
-        android:id="@+id/labelGyogyszerReceptes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Receptköteles-e?" />
+        <EditText
+            android:id="@+id/gyogyszerMennyisege"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Pl. 5"
+            android:inputType="number"
+            android:textColor="#393939" />
 
-    <Spinner
-        android:id="@+id/gyogyszerReceptesSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/igen_nem" />
+        <TextView
+            android:id="@+id/labelGyogyszerReceptes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Receptköteles-e?" />
 
-    <TextView
-        android:id="@+id/labelGyogyszerLeirasa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="A gyógyszer rövid leírása" />
+        <Spinner
+            android:id="@+id/gyogyszerReceptesSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/igen_nem" />
 
-    <EditText
-        android:id="@+id/gyogyszerLeirasa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="clip_vertical"
-        android:hint="Pl. Megfázás és influenza kiváltotta tünetek enyhítésére alkalmas készítmény."
-        android:inputType="textMultiLine|textCapSentences"
-        android:scrollHorizontally="false"
-        android:singleLine="false"
-        android:textColor="#393939" />
+        <TextView
+            android:id="@+id/labelGyogyszerLeirasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="A gyógyszer rövid leírása" />
 
-    <Button
-        android:id="@+id/gyogyszerFelviteleGomb"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="Új gyógyszer felvétele"
-        android:textColor="#393939" />
-</LinearLayout>
+        <EditText
+            android:id="@+id/gyogyszerLeirasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="clip_vertical"
+            android:hint="Pl. Megfázás és influenza kiváltotta tünetek enyhítésére alkalmas készítmény."
+            android:inputType="textMultiLine|textCapSentences"
+            android:scrollHorizontally="false"
+            android:singleLine="false"
+            android:textColor="#393939" />
+
+        <Button
+            android:id="@+id/gyogyszerFelviteleGomb"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Új gyógyszer felvétele"
+            android:textColor="#393939" />
+    </LinearLayout>
+</ScrollView>

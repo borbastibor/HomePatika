@@ -122,10 +122,6 @@ public class ReszletekFragment extends AppCompatActivity {
                 if(boxesFilled == true)
                     finish();
 
-                /* TODO
-                    Ha a készlet 0-ra lett módosítva, akkor deletehandler kell update helyett! */
-
-
             }
         });
         

@@ -114,6 +114,7 @@ public class ModositFragment extends Fragment {
                     getActivity().getFragmentManager().popBackStack();
                 }
             }
+
         });
     }
 

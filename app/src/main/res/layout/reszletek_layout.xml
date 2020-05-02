@@ -19,7 +19,8 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:inputType="text"
-        android:text="Gyógysze neve:" />
+        android:text="Gyógysze neve:"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/labelGyogyszerSzavatossaga"

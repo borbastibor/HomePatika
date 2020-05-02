@@ -18,7 +18,10 @@ import com.example.homepatika.R;
 import com.example.homepatika.data.Gyogyszer;
 
 import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "RecyclerViewAdapter";
@@ -45,6 +48,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.sor_nev.setText(arrList.get(position).getMegnevezes());
         holder.sor_leiras.setText(arrList.get(position).getLeiras());
         holder.sor_mennyiseg.setText(String.valueOf(arrList.get(position).getMennyiseg()));
+
+        // ha lejárt a szavatossága a gyógyszernek, figyelmeztetünk
+        String szavatossag = arrList.get(position).getSzavatossag();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        try {
+            Date sringDatum = simpleDateFormat.parse(szavatossag);
+            if (new Date().after(sringDatum)) {
+                Log.d(TAG, "onBindViewHolder: lejárt szavatossági idő a következőnél: " + arrList.get(position).getMegnevezes());
+                holder.sor_szavatossagiIdo.setText("Lejárt a szavatossági ideje");
+            }
+            else {
+                holder.sor_szavatossagiIdo.setText("");
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         // mennyiségtől függő színekkel jelenik meg a szám és a 'db' felirat
         if ( arrList.get(position).getMennyiseg() == 0 ) {
@@ -80,6 +100,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView sor_leiras;
         TextView sor_mennyiseg;
         TextView sor_mennyiseg_db;
+        TextView sor_szavatossagiIdo;
         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -89,6 +110,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
              sor_mennyiseg = itemView.findViewById(R.id.sor_mennyiseg);
              sor_mennyiseg_db = itemView.findViewById(R.id.sor_mennyiseg_db);
              parentLayout = itemView.findViewById(R.id.parent_layout);
+             sor_szavatossagiIdo = itemView.findViewById(R.id.sor_szavatossagiIdo);
         }
     }
 }

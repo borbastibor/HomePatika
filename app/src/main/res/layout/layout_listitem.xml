@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="Gyógyszer neve"
-        android:textColor="#000"
+        android:textColor="#393939"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/sor_leiras"

@@ -20,7 +20,8 @@
         android:gravity="center_vertical"
         android:inputType="text"
         android:text="Gyógysze neve:"
-        android:textStyle="bold"/>
+        android:textColor="#393939"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/labelGyogyszerSzavatossaga"
@@ -33,9 +34,10 @@
         android:id="@+id/gyogyszerSzavatossaga"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:focusable="false"
         android:inputType="text|textCapSentences"
         android:text="szavatosság"
-        android:focusable="false"/>
+        android:textColor="#393939" />
 
     <TextView
         android:id="@+id/labelGyogyszerMennyisege"
@@ -49,7 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:inputType="number"
-        android:text="Mennyiség" />
+        android:text="Mennyiség"
+        android:textColor="#393939" />
 
     <TextView
         android:id="@+id/labelGyogyszerReceptes"
@@ -69,7 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:inputType="number"
-        android:text="Receptes?" />
+        android:text="Receptes?"
+        android:textColor="#393939" />
 
     <TextView
         android:id="@+id/labelGyogyszerLeirasa"
@@ -86,7 +90,8 @@
         android:inputType="textMultiLine|text|textCapSentences"
         android:scrollHorizontally="false"
         android:singleLine="false"
-        android:text="leírás" />
+        android:text="leírás"
+        android:textColor="#393939" />
 
     <Button
         android:id="@+id/gyogyszerModositasGomb"

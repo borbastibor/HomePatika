@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:maxLines="1"
         android:text="Gyógyszer neve"
         android:textColor="#393939"
         android:textSize="20sp"

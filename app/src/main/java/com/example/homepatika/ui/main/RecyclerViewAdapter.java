@@ -21,6 +21,7 @@ import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -56,7 +57,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Date sringDatum = simpleDateFormat.parse(szavatossag);
             if (new Date().after(sringDatum)) {
                 Log.d(TAG, "onBindViewHolder: lejárt szavatossági idő a következőnél: " + arrList.get(position).getMegnevezes());
-                holder.sor_szavatossagiIdo.setText("Lejárt a szavatossági ideje");
+                holder.sor_szavatossagiIdo.setText("Lejárt szavatosságú! (" + arrList.get(position).getSzavatossag() + ".)");
             }
             else {
                 holder.sor_szavatossagiIdo.setText("");

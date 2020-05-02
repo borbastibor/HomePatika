@@ -93,13 +93,6 @@ public class ModositFragment extends Fragment {
                     boxesFilled = false;
                 }
 
-                /*
-                if(textEditGyogyszerszavatossaga.getText().toString().length() == 0) {
-                    textEditGyogyszerszavatossaga.setError("Add meg a gyógyszer lejárati idejét!");
-                    boxesFilled = false;
-                }
-                */
-
                 if(textEditGyogyszermennyisege.getText().toString().length() == 0) {
                     textEditGyogyszermennyisege.setError("Add meg a mennyiséget!");
                     boxesFilled = false;

@@ -64,6 +64,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
 
         } catch (ParseException e) {
+            Log.e(TAG, "onBindViewHolder: A szavatossági idő vizsgálata közben catch ágra futott.", null);
             e.printStackTrace();
         }
 

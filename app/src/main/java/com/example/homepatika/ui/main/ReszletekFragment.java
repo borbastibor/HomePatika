@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,7 +81,7 @@ public class ReszletekFragment extends AppCompatActivity {
         final EditText textEditGyogyszerleirasa = findViewById(R.id.gyogyszerLeirasa);
         final EditText textEditGyogyszerszavatossaga = findViewById(R.id.gyogyszerSzavatossaga);
         final EditText textEditGyogyszermennyisege = findViewById(R.id.gyogyszerMennyisege);
-        final EditText textEditGyogyszerreceptes = findViewById(R.id.gyogyszerReceptes);        // TODO Ide kéne a Spinnert beműteni (gyogyszerReceptesSpinner)
+        final Spinner spinnerGyogyszerreceptes = findViewById(R.id.gyogyszerReceptesSpinner);
         Button buttonGyogyszerModositas = findViewById(R.id.gyogyszerModositasGomb);
 
         final DBHandlerClass dbHandlerClass = new DBHandlerClass(this, null, null, 1);
@@ -91,7 +92,7 @@ public class ReszletekFragment extends AppCompatActivity {
         textEditGyogyszerleirasa.setText(kivalasztottGyogyszer.getLeiras());
         textEditGyogyszerszavatossaga.setText(kivalasztottGyogyszer.getSzavatossag());
         textEditGyogyszermennyisege.setText(String.valueOf(kivalasztottGyogyszer.getMennyiseg()));
-        textEditGyogyszerreceptes.setText(String.valueOf(kivalasztottGyogyszer.getReceptes()));
+        spinnerGyogyszerreceptes.setSelection(Integer.parseInt(String.valueOf(kivalasztottGyogyszer.getReceptes())));
 
         textEditGyogyszerszavatossaga.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,8 +113,7 @@ public class ReszletekFragment extends AppCompatActivity {
                 String ujLeiras = textEditGyogyszerleirasa.getText().toString();
                 String ujSzavatossag = textEditGyogyszerszavatossaga.getText().toString();
                 int ujMennyiseg = Integer.parseInt(textEditGyogyszermennyisege.getText().toString());
-                int ujReceptes = Integer.parseInt(textEditGyogyszerreceptes.getText().toString());          // TODO Ide is be kéne műteni a Spinnert (gyogyszerReceptesSpinner)
-
+                int ujReceptes = (int) spinnerGyogyszerreceptes.getSelectedItemId();
 
                 // egyesével megvizsgáljuk, hogy a leírást leszámítva minden mező ki van-e töltve, és ha nincs, arra figyelmeztetjük a usert.
                 boolean boxesFilled = true;
@@ -132,12 +132,6 @@ public class ReszletekFragment extends AppCompatActivity {
                     textEditGyogyszermennyisege.setError("Add meg a mennyiséget!");
                     boxesFilled = false;
                 }
-
-                if(textEditGyogyszerreceptes.getText().toString().length() == 0) {
-                    textEditGyogyszerreceptes.setError("Add meg, hogy a gyógyszer receptköteles-e!");
-                    boxesFilled = false;
-                }
-
 
                 // létrehozzuk a módosított gyógyszert
                 Gyogyszer modositottGyogyszer = new Gyogyszer(elemId, ujNev, ujLeiras, ujSzavatossag, ujMennyiseg, ujReceptes);

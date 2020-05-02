@@ -72,14 +72,6 @@
             android:layout_height="wrap_content"
             android:entries="@array/igen_nem" />
 
-        <EditText
-            android:id="@+id/gyogyszerReceptes"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:inputType="number"
-            android:text="Receptes?"
-            android:textColor="#393939" />
-
         <TextView
             android:id="@+id/labelGyogyszerLeirasa"
             android:layout_width="match_parent"

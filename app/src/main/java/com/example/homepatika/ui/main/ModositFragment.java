@@ -1,6 +1,7 @@
 package com.example.homepatika.ui.main;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -23,11 +25,27 @@ import com.example.homepatika.data.DBHandlerClass;
 import com.example.homepatika.data.Gyogyszer;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class ModositFragment extends Fragment {
     public ModositFragment() {
     }
 
     private static final String TAG = "ModositFragment";
+
+    final Calendar szavatosagCalendar = Calendar.getInstance();
+
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            szavatosagCalendar.set(Calendar.YEAR, year);
+            szavatosagCalendar.set(Calendar.MONTH, month);
+            szavatosagCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            szavatossagTextEditFrissitese();
+        }
+    };
 
     @Nullable
     @Override
@@ -41,8 +59,6 @@ public class ModositFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         View content = view.findViewById(R.id.content);
 
-        Log.d(TAG, "onViewCreated");
-
         final EditText textEditGyogyszerneve = getView().findViewById(R.id.gyogyszerNeve);
         final EditText textEditGyogyszerleirasa = getView().findViewById(R.id.gyogyszerLeirasa);
         final EditText textEditGyogyszerszavatossaga = getView().findViewById(R.id.gyogyszerSzavatossaga);
@@ -50,7 +66,19 @@ public class ModositFragment extends Fragment {
         final Spinner spinnerGyogyszerreceptes = getView().findViewById(R.id.gyogyszerReceptesSpinner);
         Button buttonGyogyszerFelvitele = getView().findViewById(R.id.gyogyszerFelviteleGomb);
 
+        Log.d(TAG, "onViewCreated");
+
         final DBHandlerClass dbHandlerClass = new DBHandlerClass(getActivity(), null, null, 1);
+
+        textEditGyogyszerszavatossaga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), date,
+                        szavatosagCalendar.get(Calendar.YEAR),
+                        szavatosagCalendar.get(Calendar.MONTH),
+                        szavatosagCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
         buttonGyogyszerFelvitele.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +130,6 @@ public class ModositFragment extends Fragment {
                     textEditGyogyszerleirasa.setText("");
                     spinnerGyogyszerreceptes.setSelection(0);
 
-
-
-
                     /*
                      visszalépünk
                      TODO egyik megoldás sem működik
@@ -129,6 +154,15 @@ public class ModositFragment extends Fragment {
             return;
 
         inputManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+    }
+
+    private void szavatossagTextEditFrissitese(){
+        final EditText textEditGyogyszerszavatossaga = getView().findViewById(R.id.gyogyszerSzavatossaga);
+
+        String datumFormatum = "yyyy.MM.dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datumFormatum);
+        Log.d(TAG, "szavatossagTextEditFrissitese: a dátum frissült");
+        textEditGyogyszerszavatossaga.setText(simpleDateFormat.format(szavatosagCalendar.getTime()));
     }
 
     @Override

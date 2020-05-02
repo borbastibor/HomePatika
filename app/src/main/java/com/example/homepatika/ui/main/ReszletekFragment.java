@@ -1,7 +1,9 @@
 package com.example.homepatika.ui.main;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +26,23 @@ import com.example.homepatika.data.Gyogyszer;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class ReszletekFragment extends AppCompatActivity {
     private static final String TAG = "ReszletekFragment";
+
+    final Calendar szavatosagCalendar = Calendar.getInstance();
+
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            szavatosagCalendar.set(Calendar.YEAR, year);
+            szavatosagCalendar.set(Calendar.MONTH, month);
+            szavatosagCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            szavatossagTextEditFrissitese();
+        }
+    };
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -75,6 +93,15 @@ public class ReszletekFragment extends AppCompatActivity {
         textEditGyogyszermennyisege.setText(String.valueOf(kivalasztottGyogyszer.getMennyiseg()));
         textEditGyogyszerreceptes.setText(String.valueOf(kivalasztottGyogyszer.getReceptes()));
 
+        textEditGyogyszerszavatossaga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(ReszletekFragment.this, date,
+                        szavatosagCalendar.get(Calendar.YEAR),
+                        szavatosagCalendar.get(Calendar.MONTH),
+                        szavatosagCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
         buttonGyogyszerModositas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,4 +153,13 @@ public class ReszletekFragment extends AppCompatActivity {
         });
         
     }
+    private void szavatossagTextEditFrissitese(){
+        Log.d(TAG, "szavatossagTextEditFrissitese");
+        final EditText textEditGyogyszerszavatossaga = findViewById(R.id.gyogyszerSzavatossaga);
+
+        String datumFormatum = "yyyy.MM.dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datumFormatum);
+        textEditGyogyszerszavatossaga.setText(simpleDateFormat.format(szavatosagCalendar.getTime()));
+    }
+
 }

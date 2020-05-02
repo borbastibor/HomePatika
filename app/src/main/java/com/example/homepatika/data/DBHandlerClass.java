@@ -98,7 +98,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
     //Az adatbázis minden rekordjának minden elemét adja vissza egy listában
     public ArrayList<Gyogyszer> loadAllListHandler() {
         ArrayList<Gyogyszer> result = new ArrayList<Gyogyszer>();
-        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_MEGNEVEZES + " COLLATE NOCASE";
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_MEGNEVEZES + " COLLATE LOCALIZED";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         while(cursor.moveToNext()) {

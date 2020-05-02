@@ -95,7 +95,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
         return result;
     }
 
-    //Az adatbázis minden rekordjának minden elemét adja vissza egy listában
+    //Az adatbázis minden rekordjának minden elemét adja vissza egy listában rendezve név szerint
     public ArrayList<Gyogyszer> loadAllListHandler() {
         ArrayList<Gyogyszer> result = new ArrayList<Gyogyszer>();
         String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_MEGNEVEZES + " COLLATE LOCALIZED";

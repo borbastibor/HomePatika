@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.homepatika.R;
@@ -83,6 +84,7 @@ public class ReszletekFragment extends AppCompatActivity {
         final EditText textEditGyogyszermennyisege = findViewById(R.id.gyogyszerMennyisege);
         final Spinner spinnerGyogyszerreceptes = findViewById(R.id.gyogyszerReceptesSpinner);
         Button buttonGyogyszerModositas = findViewById(R.id.gyogyszerModositasGomb);
+        Button buttonGyogyszerTorles = findViewById(R.id.gyogyszerTorlesGomb);
 
         final DBHandlerClass dbHandlerClass = new DBHandlerClass(this, null, null, 1);
 
@@ -145,6 +147,18 @@ public class ReszletekFragment extends AppCompatActivity {
 
             }
         });
+
+        buttonGyogyszerTorles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: Módosítás gomb megnyomva.");
+
+                final int elemId = kivalasztottGyogyszer.getId();
+
+                confirmDialogTorles(elemId);
+
+            }
+        });
         
     }
     private void szavatossagTextEditFrissitese(){
@@ -154,6 +168,36 @@ public class ReszletekFragment extends AppCompatActivity {
         String datumFormatum = "yyyy.MM.dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datumFormatum);
         textEditGyogyszerszavatossaga.setText(simpleDateFormat.format(szavatosagCalendar.getTime()));
+    }
+
+    //Törlés gomb megnyomásával a törlés megerősítését kérjük
+    private void confirmDialogTorles(final int id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Törlés megerősítése");
+        builder.setMessage("A gyógyszer a törlést követően eltűnik az adatbázisból. Ha újra szükség lesz rá, új gyógyszerként kell felvenni.\nValóban törölve legyen?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Igen", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DBHandlerClass dbHandlerClass = new DBHandlerClass(getApplicationContext(),null,null,1);
+                if(dbHandlerClass.deleteHandler(id) == true) {
+                    Toast.makeText(getApplicationContext(),"Sikeres törlés",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Valami hiba történt!",Toast.LENGTH_SHORT).show();
+                }
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.show();
     }
 
 }

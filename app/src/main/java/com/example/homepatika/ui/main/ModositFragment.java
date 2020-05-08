@@ -17,17 +17,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.homepatika.R;
 import com.example.homepatika.data.DBHandlerClass;
 import com.example.homepatika.data.Gyogyszer;
-import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 public class ModositFragment extends Fragment {
     public ModositFragment() {

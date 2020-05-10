@@ -65,6 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         // mennyiségtől függő színekkel jelenik meg a szám és a 'db' felirat
+        // (a színek a res/values/colors.xml-ben vannak tárolva)
         if ( arrList.get(position).getMennyiseg() == 0 ) {
             holder.sor_mennyiseg.setTextColor(context.getResources().getColor(R.color.nincsKeszleten));
             holder.sor_mennyiseg_db.setTextColor(context.getResources().getColor(R.color.nincsKeszleten));

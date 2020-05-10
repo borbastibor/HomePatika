@@ -11,10 +11,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.homepatika.R;
 
-/**
- * A [FragmentPagerAdapter] that returns a fragment corresponding to
- * one of the sections/tabs/pages.
- */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private static final String TAG = "SectionsPagerAdapter";
 
@@ -51,7 +47,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
         return 2;
     }
 }

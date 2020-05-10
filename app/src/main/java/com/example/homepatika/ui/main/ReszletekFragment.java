@@ -40,6 +40,7 @@ public class ReszletekFragment extends AppCompatActivity {
         }
     };
 
+    //
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (getCurrentFocus() != null) {
@@ -59,6 +60,7 @@ public class ReszletekFragment extends AppCompatActivity {
         getIncomingIntent();
      }
 
+     // megnézzük, hogy jött-e adat (az id-t adjuk át az AktualisFragmentről)
      private void getIncomingIntent(){
          Log.d(TAG, "getIncomingIntent: Jott id?");
          if(getIntent().hasExtra("id")) {
@@ -69,6 +71,7 @@ public class ReszletekFragment extends AppCompatActivity {
          }
      }
 
+     // az áthozott gyógyszer id-je alapján lekérdezzük a gyógyszer adatait
     private void loadData (int atvettId){
         Log.d(TAG, "loadData: betöltjük a megfelelő gyógyszer adatait az adatbázisból");
 
@@ -84,6 +87,7 @@ public class ReszletekFragment extends AppCompatActivity {
 
         final Gyogyszer kivalasztottGyogyszer = dbHandlerClass.loadOneByIdHandler(atvettId);
 
+        // az alkatrészek felveszik a kiválasztott gyógyszer paramétereit
         textEditGyogyszerneve.setText(kivalasztottGyogyszer.getMegnevezes());
         textEditGyogyszerleirasa.setText(kivalasztottGyogyszer.getLeiras());
         textEditGyogyszerszavatossaga.setText(kivalasztottGyogyszer.getSzavatossag());
@@ -99,6 +103,7 @@ public class ReszletekFragment extends AppCompatActivity {
                         szavatosagCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
         buttonGyogyszerModositas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,6 +160,8 @@ public class ReszletekFragment extends AppCompatActivity {
         });
         
     }
+
+    // ha a datepickeren változik valami, akkor frissítjük a szavatosságot tartalmazó texteditet is
     private void szavatossagTextEditFrissitese(){
         Log.d(TAG, "szavatossagTextEditFrissitese");
         final EditText textEditGyogyszerszavatossaga = findViewById(R.id.gyogyszerSzavatossaga);

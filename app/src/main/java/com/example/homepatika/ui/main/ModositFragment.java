@@ -67,6 +67,7 @@ public class ModositFragment extends Fragment {
 
         final DBHandlerClass dbHandlerClass = new DBHandlerClass(getActivity(), null, null, 1);
 
+        // a gyógyszer szavatosságát nem kézzel írjuk be, hanem a datepickert hívjuk segítségül
         textEditGyogyszerszavatossaga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,10 +121,6 @@ public class ModositFragment extends Fragment {
                     textEditGyogyszerleirasa.setText("");
                     spinnerGyogyszerreceptes.setSelection(0);
 
-                    /*
-                     visszalépünk
-                    */
-
                     getActivity().getSupportFragmentManager().popBackStack();
                     getActivity().getFragmentManager().popBackStack();
                 }
@@ -132,12 +129,11 @@ public class ModositFragment extends Fragment {
         });
     }
 
-    //hide keyboard
+    // eltüntetjük a billentyűzetet, ha nincs elveszíti a fókuszt az elem
     public static void hideKeyboard(Context ctx) {
         InputMethodManager inputManager = (InputMethodManager) ctx
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        // check if no view has focus:
         View v = ((Activity) ctx).getCurrentFocus();
         if (v == null)
             return;
@@ -145,6 +141,7 @@ public class ModositFragment extends Fragment {
         inputManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
 
+    // Ha a date pickeren változtatva van valami, bezárása után frissíteni kell a texteditet is
     private void szavatossagTextEditFrissitese(){
         final EditText textEditGyogyszerszavatossaga = getView().findViewById(R.id.gyogyszerSzavatossaga);
 

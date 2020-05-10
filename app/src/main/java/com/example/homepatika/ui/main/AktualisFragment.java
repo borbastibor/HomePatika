@@ -1,5 +1,4 @@
 package com.example.homepatika.ui.main;
-//Zsoltiteszt
 
 import android.content.DialogInterface;
 import android.os.Bundle;

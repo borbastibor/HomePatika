@@ -61,14 +61,13 @@ public class AktualisFragment extends Fragment {
         initList();
     }
 
+    //Adatbázis minden elemének betöltése az alkalmazás indításakor
     private void initList() {
         DBHandlerClass dbHandlerClass = new DBHandlerClass(getActivity(), null, null, 1);
-        //  Az adatbázis minden rekordjának minden elemét listába szedi. ArrayList<Gyogyszer> értékkel tér vissza.
-        //  Ez a függvény alkalmazható egy teljes és részletes lista megjelenítéséhez, mely minden adatot tartalmaz.
         arrList = dbHandlerClass.loadAllListHandler();
 
+        // üres adatbázis esetén figyelmeztetés
         if (arrList.size() == 0) {
-            // üres az adatbázis, feltöltjük teszt adatokkal
             Log.d(TAG, "initList: Üres adatbázis; figyelmeztetés.");
             alertDialogUres();
         }
@@ -87,15 +86,16 @@ public class AktualisFragment extends Fragment {
     //Figyelmeztetés üres adatbázis esetén
     private void alertDialogUres() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
         builder.setTitle("Üres az adatbázis!");
         builder.setMessage("Nincs egyetlen egy gyógyszer sem az adatbázisban. Az \"Új gyógyszer felvétele\" fülön van lehetőség hozzáadni.");
         builder.setCancelable(true);
         builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
+
         builder.show();
     }
 }

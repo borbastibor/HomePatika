@@ -20,41 +20,52 @@ public class Gyogyszer {
         this.receptes = Receptes;
     }
 
-    //Függvények
+    //Függvények a hozzásféréshez
     public void setId(int id) {
         this.id = id;
     }
     public int getId(){
+
         return this.id;
     }
     public void setMegnevezes(String Megnevezes) {
+
         this.megnevezes = Megnevezes;
     }
     public String getMegnevezes(){
+
         return this.megnevezes;
     }
     public void setLeiras(String Leiras) {
+
         this.leiras = Leiras;
     }
     public String getLeiras(){
+
         return this.leiras;
     }
     public void setSzavatossag(String Szavatossag) {
+
         this.szavatossag = Szavatossag;
     }
     public String getSzavatossag(){
+
         return this.szavatossag;
     }
     public void setMennyiseg(int Mennyiseg) {
+
         this.mennyiseg = Mennyiseg;
     }
     public int getMennyiseg(){
+
         return this.mennyiseg;
     }
     public void setReceptes(int Receptes) {
+
         this.receptes = Receptes;
     }
     public int getReceptes(){
+
         return this.receptes;
     }
 }

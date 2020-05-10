@@ -142,6 +142,7 @@ public class ReszletekFragment extends AppCompatActivity {
             }
         });
 
+        //Törlés gomb eseménye
         buttonGyogyszerTorles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,7 +151,6 @@ public class ReszletekFragment extends AppCompatActivity {
                 final int elemId = kivalasztottGyogyszer.getId();
 
                 confirmDialogTorles(elemId);
-
             }
         });
         
@@ -164,7 +164,7 @@ public class ReszletekFragment extends AppCompatActivity {
         textEditGyogyszerszavatossaga.setText(simpleDateFormat.format(szavatosagCalendar.getTime()));
     }
 
-    //Törlés gomb megnyomásával a törlés megerősítését kérjük
+    //Törlés megerősítés kérése
     private void confirmDialogTorles(final int id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Törlés megerősítése");
@@ -180,6 +180,7 @@ public class ReszletekFragment extends AppCompatActivity {
                 else {
                     Toast.makeText(getApplicationContext(),"Valami hiba történt!",Toast.LENGTH_SHORT).show();
                 }
+                //Visszalépés a kezdő oldalra
                 finish();
             }
         });

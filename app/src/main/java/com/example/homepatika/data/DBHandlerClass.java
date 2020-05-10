@@ -51,24 +51,27 @@ public class DBHandlerClass extends SQLiteOpenHelper{
     //Új elem hozzáadása az adatbázishoz
     public void addHandler(Gyogyszer gyogyszer) {
         ContentValues values = new ContentValues();
+
         values.put(COLUMN_MEGNEVEZES, gyogyszer.getMegnevezes());
         values.put(COLUMN_LEIRAS, gyogyszer.getLeiras());
         values.put(COLUMN_SZAVATOSSAG, gyogyszer.getSzavatossag());
         values.put(COLUMN_MENNYISEG, gyogyszer.getMennyiseg());
         values.put(COLUMN_RECEPTES, gyogyszer.getReceptes());
+
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
 
-    //Az id alapján egy elem kiválasztása az adatbázisból
+    //Az id alapján egy elem kiválasztása és visszaadása az adatbázisból
     public Gyogyszer loadOneByIdHandler(int id) {
         Gyogyszer result = new Gyogyszer();
+
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = " + String.valueOf(id);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-
         cursor.moveToFirst();
+
         result.setId(cursor.getInt(0));
         result.setMegnevezes(cursor.getString(1));
         result.setLeiras(cursor.getString(2));
@@ -84,12 +87,15 @@ public class DBHandlerClass extends SQLiteOpenHelper{
     //Az adatbázisban lévő összes rekord id-ját és megnevezését adja vissza egy listában
     public ArrayList<Object[]> loadNameListHandler() {
         ArrayList<Object[]> result = new ArrayList<Object[]>();
+
         String query = "SELECT " + COLUMN_ID + ", " + COLUMN_MEGNEVEZES + " FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
+
         while(cursor.moveToNext()) {
             result.add(new Object[]{cursor.getString(0),cursor.getString(1)});
         }
+
         cursor.close();;
         db.close();
         return result;
@@ -98,9 +104,11 @@ public class DBHandlerClass extends SQLiteOpenHelper{
     //Az adatbázis minden rekordjának minden elemét adja vissza egy listában rendezve név szerint
     public ArrayList<Gyogyszer> loadAllListHandler() {
         ArrayList<Gyogyszer> result = new ArrayList<Gyogyszer>();
+
         String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_MEGNEVEZES + " COLLATE LOCALIZED";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
+
         while(cursor.moveToNext()) {
             result.add(new Gyogyszer(
                     cursor.getInt(0),
@@ -111,6 +119,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
                     cursor.getInt(1)
             ));
         }
+
         cursor.close();;
         db.close();
         return result;
@@ -119,6 +128,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
     //Az adatbázis egy rekordját törli id alapján
     public boolean deleteHandler(int ID) {
         SQLiteDatabase db = this.getWritableDatabase();
+
         return db.delete(TABLE_NAME, COLUMN_ID + "=" + String.valueOf(ID), null) > 0;
     }
 
@@ -126,6 +136,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
     public boolean updateHandler(Gyogyszer gyogyszer) {
         int ID = gyogyszer.getId();
         ContentValues values = new ContentValues();
+
         values.put(COLUMN_MEGNEVEZES, gyogyszer.getMegnevezes());
         values.put(COLUMN_LEIRAS, gyogyszer.getLeiras());
         values.put(COLUMN_SZAVATOSSAG, gyogyszer.getSzavatossag());
@@ -133,6 +144,7 @@ public class DBHandlerClass extends SQLiteOpenHelper{
         values.put(COLUMN_RECEPTES, gyogyszer.getReceptes());
 
         SQLiteDatabase db = this.getWritableDatabase();
+
         return db.update(TABLE_NAME, values, COLUMN_ID + "=" + String.valueOf(ID), null) >0;
     }
 

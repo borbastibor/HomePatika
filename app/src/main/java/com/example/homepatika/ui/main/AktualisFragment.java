@@ -69,6 +69,7 @@ public class AktualisFragment extends Fragment {
         if (arrList.size() == 0) {
             Log.d(TAG, "initList: Üres adatbázis; figyelmeztetés.");
             alertDialogUres();
+            //tesztAdatokkalFeltolt(); //Feltöltés tesztadatokkal
         }
 
         initRecyclerView(getView());
@@ -96,5 +97,23 @@ public class AktualisFragment extends Fragment {
         });
 
         builder.show();
+    }
+
+    private void tesztAdatokkalFeltolt() {
+        DBHandlerClass dbHandler = new DBHandlerClass( getActivity(), null, null, 1);
+        Gyogyszer gyogyszer1 = new Gyogyszer(1, "Algoflex Forte", "Fájdalomcsillapító; fejfájásra", "2022.05.11", 1, 0);
+        Gyogyszer gyogyszer2 = new Gyogyszer(1, "Imodium", "Hasfogó", "2022.01.30", 2, 0);
+        Gyogyszer gyogyszer3 = new Gyogyszer(1, "Rubophen", "Lázcsillapító (ez a gyógyszer lejárt szavatossági idejű)", "2019.01.03", 2, 0);
+        Gyogyszer gyogyszer4 = new Gyogyszer(1, "Neocitran", "Forróital megfázásra", "2021.10.04", 4, 0);
+        Gyogyszer gyogyszer5 = new Gyogyszer(1, "Magnerot", "Görcsoldó; magnézum rágótabletta", "2021.11.09", 5, 0);
+        Gyogyszer gyogyszer6 = new Gyogyszer(1, "Cataflam Dolo", "Fájdalomcsillapító", "2020.08.06", 6, 0);
+
+        dbHandler.addHandler(gyogyszer1);
+        dbHandler.addHandler(gyogyszer2);
+        dbHandler.addHandler(gyogyszer3);
+        dbHandler.addHandler(gyogyszer4);
+        dbHandler.addHandler(gyogyszer5);
+        dbHandler.addHandler(gyogyszer6);
+
     }
 }
